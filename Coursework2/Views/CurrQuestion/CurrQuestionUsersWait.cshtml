@@ -1,0 +1,26 @@
+﻿@model Tuple<List<Coursework2.Data.Models.CurrentQuestion>, string, string, string>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <p>@Model.Item1[0].Question</p>
+
+    <form method="post" action="/CurrQuestion/CurrQuestionUser" id="Form">
+        <input type="hidden" name="idGameSession" value="@Model.Item2">
+        <input type="hidden" name="idUsers" value="@Model.Item3">
+        <input type="hidden" name="idPackage" value="@Model.Item4">
+        <button type="submit" style="display: none"></button>
+    </form>
+    <script src="~/JS/CurrQuestionUsersWait.js"></script>
+</body>
+
+</html>
+

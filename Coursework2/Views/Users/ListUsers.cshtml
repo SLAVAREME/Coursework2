@@ -1,0 +1,122 @@
+﻿@model Tuple<List<Coursework2.Data.Models.Users>, List<Coursework2.Data.Models.GameSession>, List<Coursework2.Data.Models.ClientSession>, List<Coursework2.Data.Models.PackageOfQuestions>>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+
+    <table border="1">
+        <caption>О Игроке</caption>
+        <tr>
+            <th>id</th>
+            <th>Surname</th>
+            <th>Name</th>
+        </tr>
+        <tr>
+            <th>@Model.Item1[0].Id</th>
+            <th>@Model.Item1[0].Surname</th>
+            <th>@Model.Item1[0].Name</th>
+        </tr>
+    </table>
+
+    <form method="post" action="/CurrQuestion/CurrQuestionFinishUsers" id="Result">
+    </form>
+    <form method="post" action="/CurrQuestion/CurrQuestionUser" id="JointGame">
+        <table border="1">
+            <caption>Все ваши игры</caption>
+            <tr>
+                <th>id</th>
+                <th>Name of game</th>
+                <th>Start</th>
+                <th></th>
+            </tr>
+
+            @{
+                var h = Model.Item3.ToList();
+                foreach (var x in @Model.Item3)
+                {
+                    if (x.IdUser == @Model.Item1[0].Id)
+                    {
+                        foreach (var d in @Model.Item2)
+                        {
+                            if (d.Id == x.IdSession)
+                            {
+                                <tr>
+                                    <th>@d.Id</th>
+                                    <th>@d.NameOfGame</th>
+                                    <th>@d.Start</th>
+                                    <th>@d.PackageOfQuestions?.Name</th>
+                                    <th>
+                                        @if ((d.Start <= DateTime.Now.AddMinutes(5)) && (d.Start >= DateTime.Now))
+                                        {
+                                            <input type="hidden" name="idGameSession" value="@d.Id" form="JointGame">
+                                            <input type="hidden" name="idUsers" value="@Model.Item1[0].Id" form="JointGame">
+                                            <input type="hidden" name="idPackage" value="@d.PackageOfQuestions?.Id" form="JointGame">
+                                            <button type="submit" form="JointGame">Присоедениться к игре</button>
+                                        }
+                                        @if (d.Start < DateTime.Now)
+                                        {
+                                            <input type="hidden" name="idUsers" value="@Model.Item1[0].Id" form="Result">
+                                            <input type="hidden" name="idGameSession" value="@d.Id" form="Result">
+                                            <button type="submit" form="Result">посмотерть таблицу результатов</button>
+                                        }
+                                    </th>
+
+                                </tr>
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+        </table>
+    </form>
+
+
+
+    <form method="post" action="/Users/addGame">
+
+        <select size="1" name="addGame">
+            @{
+                bool fg = false;
+                foreach (var x in @Model.Item2)
+                {
+                    fg = false;
+                    foreach (var d in @Model.Item3)
+                    {
+                        if (d.IdSession == x.Id && d.IdUser == @Model.Item1[0].Id)
+                        {
+                            fg = true;
+                            break;
+                        }
+                    }
+                    if (!fg)
+                    {
+                        <option value=@x.Id>@x.NameOfGame</option>
+                    }
+                }
+            }
+        </select>
+        @*<label>Что это за туринр:</label>
+            <input type="text" name="name_of_game" required>
+            <label>Время когда будет проводится игра: </label>
+            <input type="datetime-local" name="datetime" required>*@
+        <input type="hidden" name="id" value="@Model.Item1[0].Id">
+        @*<input type="hidden" name="idd" value="@Model.Item2[0].Id">*@
+        <button type="submit">Add</button>
+    </form>
+
+
+    <script src="/JS/ListUsers.js"></script>
+</body>
+
+</html>

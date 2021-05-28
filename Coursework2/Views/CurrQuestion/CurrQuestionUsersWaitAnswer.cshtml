@@ -1,0 +1,41 @@
+﻿@model Tuple<List<Coursework2.Data.Models.CurrentQuestion>, string, string, string, List<Coursework2.Data.Models.Questions>>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <p>@Model.Item1[0].Question</p>
+    <p>Ответ: @Model.Item1[0].Questions?.Answer</p>
+    <p>Коментарий: @Model.Item1[0].Questions?.Comment</p>
+
+    @{
+        if (@Model.Item1.Count() == @Model.Item5.Count())
+        {
+        <form method="post" action="/CurrQuestion/CurrQuestionFinishUsers">
+            <input type="hidden" name="idUsers" value="@Model.Item3">
+            <input type="hidden" name="idGameSession" value="@Model.Item2">
+            <button type="submit">К таблице временных результатов</button>
+        </form>
+        }
+        else
+        {
+           <form method="post" action="/CurrQuestion/CurrQuestionUser" id="Form">
+                <input type="hidden" name="idGameSession" value="@Model.Item2">
+                <input type="hidden" name="idUsers" value="@Model.Item3">
+                <input type="hidden" name="idPackage" value="@Model.Item4">
+                <button type="submit" style="display: none"></button>
+            </form> 
+        }
+     }
+    
+    <script src="~/JS/CurrQuestionUsersWait.js"></script>
+</body>
+
+</html>

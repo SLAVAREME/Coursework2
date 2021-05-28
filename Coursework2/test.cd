@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Coursework2.Data.Models.Client_Session">
+    <Position X="3.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACACAAAAAAAAAAAAAEAAgAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Data\Models\Client_Session.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework2.Data.Models.CurrentAnswer">
+    <Position X="11.75" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAICADCAAAAAAAAAAAAEAAAAAAABACAAAAAAAgAAAAA=</HashCode>
+      <FileName>Data\Models\CurrentAnswer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework2.Data.Models.CurrentQuestion">
+    <Position X="10" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACBAAAAAAAAAAAEABAAAAAAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>Data\Models\CurrentQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework2.Data.Models.Game_session">
+    <Position X="8.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAQCAAAAAAAAAAAAAAAAAAAAAAAAACBAACAEA=</HashCode>
+      <FileName>Data\Models\Game_session.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework2.Data.Models.Leading">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAUABAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Data\Models\Leading.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework2.Data.Models.PackageOfQuestions">
+    <Position X="5.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACABAAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Models\PackageOfQuestions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework2.Data.Models.Questions">
+    <Position X="10" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAAAAAAgAAAAAAAAAAAAAAAAAACAiAAAAA=</HashCode>
+      <FileName>Data\Models\Questions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework2.Data.Models.ResultsTable">
+    <Position X="4.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Data\Models\ResultsTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework2.Data.Models.Users">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAUABAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Data\Models\Users.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

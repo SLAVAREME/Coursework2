@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <form method="post" action="/Home/tests">
+        <p>
+            <label>Username : </label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+        </p>
+        <p>
+            <label>Password : </label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+        </p>
+        <p>
+            <select size="1" name="users">
+                <option disabled>Выберите героя</option>
+                <option selected value="player">Игрок</option>
+                <option value="leader">Ведущий</option>
+            </select>
+        </p>
+        <button type="submit">Login</button>
+    </form>
+    
+    @*<a role="button" asp-controller="Leading" asp-action="ListLeading">List Leading</a>*@
+</body>
+</html>

@@ -1,0 +1,5 @@
+﻿{
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\Programming\\C#\\web\\Coursework2\\Coursework2\\Coursework2\\Data\\DB\\Coursework2.mdf;Integrated Security=True"
+  }
+}

@@ -1,0 +1,32 @@
+﻿@model Tuple<List<Coursework2.Data.Models.PackageOfQuestions>, string>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <form method="post" action="/Question/SavePackage">
+        <label>Имя пакета вопросов:</label>
+        <input type="text" name="name_of_package" required value="@Model.Item1[0].Name">
+        <label>Кто редактор пакета:</label>
+        <input type="text" name="package_editor" required value="@Model.Item1[0].PackageEditor">
+        <label>Когда создан пакет:</label>
+        <input type="datetime-local" name="datetime" required value="@Model.Item1[0].DateOfCreation">
+        <input type="hidden" name="idPackage" value="@Model.Item1[0].Id" />
+        <input type="hidden" name="idLeading" value="@Model.Item2" />
+        <button type="submit">Eding</button>
+    </form>
+
+    <form method="post" action="/Question/DellPackage">
+        <input type="hidden" name="idPackage" value="@Model.Item1[0].Id" />
+        <input type="hidden" name="idLeading" value="@Model.Item2" />
+        <button type="submit">Delite</button>
+    </form>
+</body>
+</html>

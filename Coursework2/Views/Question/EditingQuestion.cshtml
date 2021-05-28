@@ -1,0 +1,54 @@
+﻿@model Tuple<List<Coursework2.Data.Models.Questions>,List<Coursework2.Data.Models.PackageOfQuestions>, string>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <form method="post" action="/Question/SaveQuestion">
+        <label>Ввидите текст вопроса:</label>
+        <input type="text" name="question_text" required value="@Model.Item1[0].QuestionText">
+        <label>Ввидите ответ вопроса:</label>
+        <input type="text" name="answer" required value="@Model.Item1[0].Answer">
+        <label>Ввидите коментарий к вопросу:</label>
+        <input type="text" name="сomment" required value="@Model.Item1[0].Comment">
+        <label>Кто автор вопроса:</label>
+        <input type="text" name="author" required value="@Model.Item1[0].Author">
+
+        <label>К какому пакету воросов относиться этот вопрос</label>
+        <select size="1" name="packages">
+            <option disabled>Выберите к какому пакету относиться вопрос</option>
+            @{
+                foreach (var x in @Model.Item2)
+                {
+                    if (x.Id == Model.Item1[0].IdPackage)
+                    {
+                        <option value="@x.Id" selected>@x.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@x.Id">@x.Name</option>
+
+                    }
+                }
+            }
+        </select>
+
+        <input type="hidden" name="idQuestion" value="@Model.Item1[0].Id" />
+        <input type="hidden" name="idLeading" value="@Model.Item3" />
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <form method="post" action="/Question/DellQuestion">
+        <input type="hidden" name="idQuestion" value="@Model.Item1[0].Id" />
+        <input type="hidden" name="idLeading" value="@Model.Item3" />
+        <button type="submit">Удалить</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,129 @@
+﻿@model Tuple<List<Coursework2.Data.Models.Questions>, List<Coursework2.Data.Models.PackageOfQuestions>,string>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    
+       
+        
+
+        <table border="1">
+            <caption>Все вопросы которые есть в базе</caption>
+            <tr>
+                <th>id</th>
+                <th>Package Name</th>
+                <th>Question Text</th>
+                <th>Answert</th>
+                <th>Commentt</th>
+                <th>Author</th>
+            </tr>
+
+                @{
+                    foreach (var x in @Model.Item1)
+                    {
+                        string h = Convert.ToString(x.Id);
+                        <tr>
+                        <th>@h</th>
+                        <th>@x.PackageOfQuestions?.Name</th>
+                        <th>@x.QuestionText</th>
+                        <th>@x.Answer</th>
+                        <th>@x.Comment</th>
+                        <th>@x.Author</th>
+                        <th>
+                            <form method="post" action="/Question/EditingQuestion">
+                                <input type="hidden" name="idQuestion" value="@h"  />
+                                <input type="hidden" name="idLeading" value="@Model.Item3" />
+                                <button type="submit">Редактировать</button>
+                            </form>
+                        </th>
+                    </tr>
+                }
+                }
+
+            </table>
+        
+
+    
+    
+        <table border="1">
+            <caption>Все пакеты котрые есть в базе</caption>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Package Editor</th>
+                <th>Date Of Creation</th>
+            </tr>
+            <tr>
+                @{
+                    foreach (var x in @Model.Item2)
+                    {
+                    <tr>
+                        <th>@x.Id</th>
+                        <th>@x.Name</th>
+                        <th>@x.PackageEditor</th>
+                        <th>@x.DateOfCreation</th>
+                        <th>
+                            <form method="post" action="/Question/EditingPackage">
+                                <input type="hidden" value="@x.Id" name="idPackage">
+                                <input type="hidden" name="idLeading" value="@Model.Item3" />
+                                <button type="submit">Редактировать</button>
+                            </form>
+                        </th>
+                    </tr>
+                }
+                }
+                </tr>
+            </table>
+
+
+
+            <form method="post" action="/Question/addPackage">
+                <label>Имя пакета вопросов:</label>
+                <input type="text" name="name_of_package" required>
+                <label>Кто редактор пакета:</label>
+                <input type="text" name="package_editor" required>
+                <label>Когда создан пакет:</label>
+                <input type="datetime-local" name="datetime" required>
+                <input type="hidden" name="idLeading" value="@Model.Item3">
+                <button type="submit">Добваить вопрос</button>
+            </form>
+
+            <form method="post" action="/Question/addQuestion">
+                <label>Ввидите текст вопроса:</label>
+                <input type="text" name="question_text" required>
+                <label>Ввидите ответ вопроса:</label>
+                <input type="text" name="answer" required>
+                <label>Ввидите коментарий к вопросу:</label>
+                <input type="text" name="сomment" required>
+                <label>Кто автор вопроса:</label>
+                <input type="text" name="author" required>
+                <select size="1" name="packages">
+                    <option disabled>Выберите к какому пакету относиться вопрос</option>
+                    @{
+                        foreach (var x in @Model.Item2)
+                        {
+                            <option value="@x.Id">@x.Name</option>
+                        }
+                    }
+                </select>
+                <input type="hidden" name="idLeading" value="@Model.Item3">
+                <button type="submit">Добваить пакет вопросов</button>
+            </form>
+
+
+            <form method="post" action="/Leading/ListLeadingString">
+                <input type="hidden" name="idLeading" value="@Model.Item3">
+                <button type="submit">Вернуться назад</button>
+            </form>        
+
+        </body>
+
+    </html>

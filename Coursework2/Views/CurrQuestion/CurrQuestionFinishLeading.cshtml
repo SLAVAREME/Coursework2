@@ -1,0 +1,44 @@
+﻿@model Tuple<string, List<Coursework2.Data.Models.ResultsTable>,string>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Имя участника</td>
+            <td>Количество баллов</td>
+        </tr>
+
+        @{
+            foreach (var x in Model.Item2)
+            {
+                <tr>
+                    <td>@x.NameUsers</td>
+                    <td>@x.CountPoints</td>
+                </tr>
+            }
+        }
+
+    </table>
+
+    <form method="post" action="/Results/ListResults">
+        <input type="hidden" name="idLeading" value="@Model.Item1">
+        <input type="hidden" name="idSesion" value="@Model.Item3">
+        <button type="submit">Редактироввать результаты</button>
+    </form>
+
+
+    <form method="post" action="/Leading/ListLeadingString">
+        <input type="hidden" name="idLeading" value="@Model.Item1">
+        <button type="submit">Вернуться к списку игр</button>
+    </form>
+</body>
+</html>

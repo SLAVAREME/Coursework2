@@ -1,0 +1,22 @@
+﻿@model Tuple<string, string, string>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+
+    <form method="post" action="/CurrQuestion/NextQuestions">
+        <input type="hidden" name="idGameSession" value="@Model.Item1">
+        <input type="hidden" name="idPackage" value="@Model.Item2">
+        <input type ="hidden" name="idLeading" value="@Model.Item3">
+        <button type="submit">Начать игру</button>
+    </form>
+</body>
+</html>
